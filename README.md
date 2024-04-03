@@ -1,7 +1,7 @@
 # Python Backend Developer Coding Tasks
 
 ## Description
-This repository contains coding tasks for the position of Junior Python Backend Developer. Candidates are expected to complete the tasks as per the instructions provided and submit their solutions via a pull request.
+This repository contains coding tasks for the position of Python Backend Developer. Candidates are expected to complete the tasks as per the instructions provided and submit their solutions via a pull request.
 
 ---
 
