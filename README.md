@@ -20,6 +20,14 @@ Design, develop, and implement a backend system using FastAPI or Django.
 - Use an open-source database (e.g., SQLite, PostgreSQL).
 - Write unit tests for your code.
 
+##### Feature List
+- CRUD operations for tasks
+- Fetch and display weather data from OpenWeatherMap API
+- Calculate and display the average temperature for a location
+  - Endpoint to get weather data for a city: `GET /weather/{city}`
+  - Endpoint to calculate average temperature for a list of cities: `GET /average_temperature/{city_list}`
+  - Additional endpoints for CRUD operations for tasks as mentioned above
+
 ##### Sample Database: SQLite
 You can use SQLite, a C library that provides a lightweight disk-based database, to store and retrieve data for this task.
 
