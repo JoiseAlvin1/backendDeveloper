@@ -48,6 +48,8 @@ Perform unit testing, integration testing, and performance optimization of backe
 - Optimize the backend code for performance.
 
 ---
+#### Task 3: Optional (For Enhanced Security):
+Implement API Key authentication using a middleware in (FastAPI) or Django's built-in authentication capabilities.
 
 #### Guidelines for Submission
 1. Fork this repository.
