@@ -50,7 +50,8 @@ Perform unit testing, integration testing, and performance optimization of backe
 ---
 
 #### Task 3: Optional (For Enhanced Security):
-Implement API Key authentication using a middleware in (FastAPI) or Django's built-in authentication capabilities.
+- Implement API Key authentication using a middleware in (FastAPI) or Django's built-in authentication capabilities.
+  
 ---
 
 #### Guidelines for Submission
