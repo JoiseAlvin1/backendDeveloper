@@ -4,17 +4,17 @@ from rest_framework.response import Response
 from rest_framework import status
 from .models import Task
 from .serializers import TaskSerializer
-from .utils import get_weather, get_average_temperature
+from .tasks import get_weather, get_average_temperature
 
 class WeatherAPIView(APIView):
     def get(self, request, city):
-        weather_data = get_weather(city)
+        weather_data = get_weather.delay(city).get()
         return Response(weather_data, status=status.HTTP_200_OK)
     
 class AverageTemperatureAPIView(APIView):
     def get(self, request, city_list):
         cities = city_list.split(',')
-        average_temperature = get_average_temperature(cities)
+        average_temperature = get_average_temperature.delay(cities).get()
         if average_temperature is not None:
             return Response({'average_temperature': average_temperature}, status=status.HTTP_200_OK)
         else:

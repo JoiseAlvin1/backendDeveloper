@@ -1,14 +1,17 @@
+from celery import shared_task
 import requests
 from django.conf import settings
 api_key = settings.OPENWEATHERMAP_API_KEY
 
 
+@shared_task
 def get_weather(city):
     url = f'https://api.openweathermap.org/data/2.5/weather?q={city}&appid={api_key}'
     response = requests.get(url)
     data = response.json()
     return data
 
+@shared_task
 def get_average_temperature(city_list):
     temperatures = []
     for city in city_list:

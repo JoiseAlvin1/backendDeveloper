@@ -33,17 +33,15 @@ def test_delete_task_api():
     assert response.status_code == 204
     assert not Task.objects.filter(pk=task.pk).exists()
 
-# @pytest.mark.django_db
-# def test_get_weather_api():
-#     client = APIClient()
-#     response = client.get('/weather/Islamabad/')
-#     assert response.status_code == 200
-#     assert 'weather' in response.data
-#     assert 'main' in response.data
+def test_get_weather_api():
+    client = APIClient()
+    response = client.get('/weather/Islamabad/')
+    assert response.status_code == 200
+    assert 'weather' in response.data
+    assert 'main' in response.data
 
-# @pytest.mark.django_db
-# def test_get_average_temperature_api():
-#     client = APIClient()
-#     response = client.get('/average_temperature/Islamabad,Karachi/')
-#     assert response.status_code == 200
-#     assert 'average_temperature' in response.data
+def test_get_average_temperature_api():
+    client = APIClient()
+    response = client.get('/average_temperature/Islamabad,Karachi/')
+    assert response.status_code == 200
+    assert 'average_temperature' in response.data
