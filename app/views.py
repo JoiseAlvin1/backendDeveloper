@@ -16,7 +16,7 @@ class AverageTemperatureAPIView(APIView):
         cities = city_list.split(',')
         average_temperature = get_average_temperature(cities)
         if average_temperature is not None:
-            return Response({'average_temperature': average_temperature})
+            return Response({'average_temperature': average_temperature}, status=status.HTTP_200_OK)
         else:
             return Response({'message': 'No temperature data available for provided cities'}, status=status.HTTP_404_NOT_FOUND)
 
