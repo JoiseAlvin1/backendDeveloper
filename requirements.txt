@@ -1,0 +1,8 @@
+django
+djangorestframework
+requests
+pytest
+pytest-django
+celery
+redis
+django-redis
