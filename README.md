@@ -2,6 +2,9 @@
 
 ##### Details
 
+API Documentation
+https://documenter.getpostman.com/view/22085405/2sA3BgAFKF
+
 Performance Optimizations
 1. Database Indexing (indexed the title field in Task model to improve query performance)
 2. Serial Optimization (serialized only the necessary data fields to minimize the payload size, instead of using __all__)
