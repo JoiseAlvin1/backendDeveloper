@@ -2,6 +2,9 @@
 
 ##### Details
 
+API Documentation
+https://documenter.getpostman.com/view/22085405/2sA3BgAFKF
+
 Implemented API Key authentication using Django's built-in authentication capabilities.
 1. model for APIKey
 2. APIView for GenerateAPIKey
