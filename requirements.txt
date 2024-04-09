@@ -5,3 +5,4 @@ pytest
 pytest-django
 celery
 redis
+django-redis
