@@ -16,11 +16,17 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from weather_app.views import *
+from weather_app.views import TasksViewSet, WeatherDataAPIView, AverageWeatherDataAPIView
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('weather/<str:city>', WeatherDataAPIView.as_view(), name='city_weather'),
+    # urls for performing CRUD operations on the Tasks
     path('tasks', TasksViewSet.as_view({'get':'list','post':'create'}), name='task-list'),
     path('tasks/<int:pk>', TasksViewSet.as_view({'get':'retrieve','put':'update','delete':'destroy'}), name='task'),
-    path('average_temperature/<str:cities>', AverageWeatherDataAPIView.as_view(), name='average_weather')
+
+    # parameterized urls for fetching & performing calculations on data fetched by Open Weather API
+    path('weather/<str:city>', WeatherDataAPIView.as_view(), name='city_weather'),
+    path('average_temperature/<str:cities>', AverageWeatherDataAPIView.as_view(), name='average_weather'),
+
+    # url for admin portal, not necessary for this project
+    path('admin/', admin.site.urls)
+
 ]
