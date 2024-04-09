@@ -1,79 +1,76 @@
-### Python Backend Developer Coding Tasks
+### Python Backend Developer Coding Tasks' Solutions
 
+#### NOTE
+#### When at Branch 3 (mentioned below by name) 
+####   &nbsp;  PLEASE ADD ?api_key={api_key_from_env_file} to the urls when making requests to the endpoints
+
+This branch has an API Key Authentication Middleware implemented and so will return 401 if not passed a valid api key. The test cases written will run OK in other branches as they test the endpoints without the api key but they will fail on branch 3. It has been done on purpose so you can verify that the endpoints are blocked when the middleware is in place.
+<br>
+
+#### Example Request URLs for Branch 3
+`http://localhost:8000/weather/paris?api_key=d5478237dac7aa890c813beb9e3cc206`<br>
+`http://localhost:8000/average_temperature/lahore,karachi?api_key=d5478237dac7aa890c813beb9e3cc206`<br>
+`http://localhost:8000/tasks?api_key=d5478237dac7aa890c813beb9e3cc206`<br>
+`http://localhost:8000/tasks/1?api_key=d5478237dac7aa890c813beb9e3cc206`
+
+for the other branches, you can remove the ?api_key={api_key} part.
+
+---
 #### Description
-This repository contains coding tasks for the position of Python Backend Developer. Candidates are expected to complete the tasks as per the instructions provided and submit their solutions via a pull request.
+This repository contains solutions for the coding tasks given  for the position of Python Backend Developer.
+There are mainly 3 branches for the given 3 tasks. The branches are
+
+- backend-system &nbsp; &nbsp;  (Branch 1)
+- backend-system-with-unit-testing-and-optimization  &nbsp; &nbsp;  (Branch 2) 
+- backend-system-with-unit-testing-and-optimization-and-api-key-authentication &nbsp; &nbsp;  (Branch 3)
 
 ---
 
-#### Tasks
+#### Project Setup 
+
+Please note that for this django project the backendDeveloper root directory is being used for project's root directory.
+
+##### Steps
+- Switch to branch 3 using<br>
+`git checkout backend-system-with-unit-testing-and-optimization-and-api-key-authentication`
+
+- Install the required dependencies using<br>
+`pip install -r requirements.txt`
+- Run the server using<br>
+`python manage.py runserver`
+
+---
+#### Solutions
 
 ---
 
-#### Task 1: Design and Implement a FastAPI/Django Backend System
+#### Solution 1: Developing a Django Backend System 
+#### Branch: backend-system
 
 ##### Description
-Design, develop, and implement a backend system using FastAPI or Django.
-
-##### Requirements
-- Create RESTful APIs for data access and manipulation.
-- Implement CRUD operations.
-- Use an open-source database (e.g., SQLite, PostgreSQL).
-- Write unit tests for your code.
-
-##### Feature List
-- CRUD operations for tasks
-- Fetch and display weather data from OpenWeatherMap API
-- Calculate and display the average temperature for a location
-  - Endpoint to get weather data for a city: `GET /weather/{city}`
-  - Endpoint to calculate average temperature for a list of cities: `GET /average_temperature/{city_list}`
-  - Additional endpoints for CRUD operations for tasks as mentioned above
-
-##### Sample Database: SQLite
-You can use SQLite, a C library that provides a lightweight disk-based database, to store and retrieve data for this task.
-
-##### Sample API: OpenWeatherMap API
-Integrate the OpenWeatherMap API to fetch and display weather data.
-
-- **API Documentation**: [OpenWeatherMap API](https://openweathermap.org/api)
+This solution involves three parts<br>
+- Implementing a model for Tasks, the model's serializer as well as the
+class based view set for performing CRUD operations on the tasks. The view set provides predefined functions for all the CRUD operations.
+Moreover, the APIView or ViewSet of rest framework makes the CRUD endpoints browsable.
+- Integration with OpenWeather API.
+- Developing two browsable class based views inheriting from rest APIView. The first one for getting the weather data for a given city. The second one for calculating the average temperature for given number of cities.
 
 ---
 
-#### Task 2: Unit Testing and Performance Optimization
+#### Solution 2: Test Cases Implementation & Code Optimization 
+####  Branch: backend-system-with-unit-testing-and-optimization
 
 ##### Description
-Perform unit testing, integration testing, and performance optimization of backend code.
-
-##### Requirements
-- Write unit tests to cover the implemented functionalities.
-- Optimize the backend code for performance.
+This solution involves two parts<br>
+- Removing unnecessary imports, variables, following PEP-8 Standards, converting some instance methods to static methods which did not require interaction with instance/self, abstracting the sensitive information e.g., api key using a .env file, handling bad requests.
+- Writing & executing test cases for verifying successful responses from the endpoints implemented without the api key (valid for branch 1 and 2).
 
 ---
 
-#### Task 3: Optional (For Enhanced Security):
-- Implement API Key authentication using a middleware in (FastAPI) or Django's built-in authentication capabilities.
-  
----
-
-#### Guidelines for Submission
-1. Fork this repository.
-2. Create a new branch for each task.
-3. Complete the tasks as per the requirements.
-4. Write a README.md file explaining your solution and any additional information.
-5. Commit and push your changes to your forked repository.
-6. Create a pull request to submit your solutions.
+#### Solution 3: Implementation of API-KEY Authentication Middleware
+####  Branch: backend-system-with-unit-testing-and-optimization-and-api-key-authentication
+##### Description
+This solution involves developing a custom authentication middleware which basically checks every request url for a query parameter 'api_key' and compares it with the valid 
+api key set in the .env file of the project. It returns 401/unauthorized in case of a mismatch.
 
 ---
-
-#### Sample Project
-A sample project is provided to help candidates understand the expectations and requirements for the tasks.
-
-##### Sample Project Setup
-- **Database**: SQLite
-- **API**: OpenWeatherMap API
-
----
-
-#### Additional Notes
-- Candidates are encouraged to follow best practices for code quality, security, and performance optimization.
-- Candidates are expected to provide well-documented and readable code.
-- Any questions or clarifications regarding the tasks should be raised via GitHub issues.
