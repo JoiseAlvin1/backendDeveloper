@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -47,6 +48,7 @@ DJANGO_SECONDARY_APPS = [
 
 PROJECT_APPS = [
     "apps.task",
+    "apps.weather_forcast"
 ]
 
 INSTALLED_APPS = DJANGO_APPS + DJANGO_SECONDARY_APPS + PROJECT_APPS
@@ -187,3 +189,8 @@ LOGGING = {
         },
     },
 }
+
+# Open weather map configurations
+OPEN_WEATHER_MAP_BASEURL = os.getenv("OPEN_WEATHER_MAP_BASEURL", "http://api.openweathermap.org/data/2.5")
+OPEN_WEATHER_MAP_ACCESS_KEY = os.getenv("OPEN_WEATHER_MAP_ACCESS_KEY", "a22ffc7c50ae354a0708397515664022")
+
