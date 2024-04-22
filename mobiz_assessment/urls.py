@@ -15,8 +15,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from apps.auth.views import AccessTokenAPIView
 
 urlpatterns = [
     path("task/", include("apps.task.urls")),
-path("weather/", include("apps.weather_forcast.urls")),
+    path("weather/", include("apps.weather_forcast.urls")),
+    path("access-token/", AccessTokenAPIView.as_view(), name="task-view")
 ]

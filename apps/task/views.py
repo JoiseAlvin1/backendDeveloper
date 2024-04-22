@@ -2,6 +2,8 @@ import logging
 from django.http import Http404
 from rest_framework.filters import OrderingFilter
 from rest_framework.generics import ListAPIView, UpdateAPIView, RetrieveAPIView
+from rest_framework.authentication import TokenAuthentication
+from rest_framework.permissions import IsAuthenticated
 from django.core.exceptions import ObjectDoesNotExist
 from apps.baselayer.baseapiviews import BaseAPIView, get_first_error_message_from_serializer_errors
 from django.conf import settings
@@ -12,6 +14,8 @@ logger = logging.getLogger(settings.LOGGER_NAME_PREFIX + __name__)
 
 
 class TaskAPIView(BaseAPIView, ListAPIView, UpdateAPIView, RetrieveAPIView):
+    authentication_classes = [TokenAuthentication, ]
+    permission_classes = [IsAuthenticated, ]
     serializer_class = TaskSerializer
     queryset = Task.objects.all()
     filter_backends = (OrderingFilter,)
