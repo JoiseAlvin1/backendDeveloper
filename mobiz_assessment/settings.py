@@ -16,7 +16,6 @@ import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
@@ -27,7 +26,6 @@ SECRET_KEY = 'django-insecure-ylt26quyoubfo1biput8ai5&qve&n+c@n)fxp1p5#ahkj#2m-v
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
 
 # Application definition
 
@@ -98,7 +96,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'mobiz_assessment.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
@@ -108,6 +105,18 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
+# postgres configuration if required
+# DATABASES = {
+#     "default": {
+#         "ENGINE": "django.db.backends.postgresql_psycopg2",
+#         "NAME": os.getenv("DB_NAME", "backend_db"),
+#         "USER": os.getenv("DB_USERNAME", "backend_user"),
+#         "PASSWORD": os.getenv("DB_PASSWORD", "backend@password"),
+#         "HOST": os.getenv("DB_HOST", "localhost"),
+#         "PORT": os.getenv("DB_PORT", "6432"),
+#     }
+# }
 
 
 # Password validation
@@ -128,7 +137,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
 
@@ -141,7 +149,6 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
@@ -193,4 +200,3 @@ LOGGING = {
 # Open weather map configurations
 OPEN_WEATHER_MAP_BASEURL = os.getenv("OPEN_WEATHER_MAP_BASEURL", "http://api.openweathermap.org/data/2.5")
 OPEN_WEATHER_MAP_ACCESS_KEY = os.getenv("OPEN_WEATHER_MAP_ACCESS_KEY", "a22ffc7c50ae354a0708397515664022")
-
